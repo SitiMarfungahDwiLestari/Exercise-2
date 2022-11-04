@@ -10,7 +10,10 @@ namespace Exercise2
     {
         static int InsertionSort()
         {
-            
+            Console.Write("\n=============== Program untuk mengurutkan Array menggunakan Insertion Sort ===============");
+            Console.Write("\n\n Masukkan Jumlah Elemen: ");
+            int max = 58;
+
         }
         static void Main(string[] args)
         {
