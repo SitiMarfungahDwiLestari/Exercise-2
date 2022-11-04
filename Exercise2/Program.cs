@@ -54,6 +54,68 @@ namespace Exercise2
         }
 
     }
-    
+    class MergeSort
+    {
+        static public void MainMerge(int[] nomor, int kiri, int tengah, int kanan)
+        {
+            int[] temp = new int[25];
+            int i, eol, num, pos;
+            eol = (tengah - 1);
+            pos = kiri;
+            num = (kanan - kiri + 1);
+
+            while ((kiri <= eol) && (tengah <= kanan))
+            {
+                if (nomor[kiri] <= nomor[tengah])
+                    temp[pos++] = nomor[kiri++];
+                else 
+                    temp[pos++] = nomor[tengah++];
+            }
+            while (kiri <= eol)
+                temp[pos++] = nomor[kiri++];
+            while (tengah <= kanan)
+                temp[pos++] = nomor[tengah++];
+            for (i = 0; i < num; i++)
+            {
+                nomor[kanan] = temp[kanan];
+                kanan--;
+            }
+        }
+        static public void SortMerge (int[] nomor, int kiri, int kanan)
+        {
+            int tengah;
+            if (kanan > kiri)
+            {
+                tengah = ( (kanan + kiri) / 2);
+                SortMerge (nomor, kiri, tengah);
+                SortMerge(nomor, (tengah + 1 ), kanan);
+                MainMerge( nomor,kiri,(tengah +1), kanan);
+            }
+        }
+        static void Main (string[]args)
+        {
+            Console.Write("\nProgram untuk mengurutkan data Array menggunakan Merge Sort");
+            Console.Write("\n\n Masukkan Jumlah Elemen: ");
+            int max = Convert.ToInt32(Console.ReadLine());
+            int[] nomor = new int[max];
+            for (int i = 0; i < max; i++)
+            {
+                Console.Write("\nMasukkan elemen ke-[" + (i + 1).ToString() + "]");
+                nomor[i] = Convert.ToInt32(Console.ReadLine());
+            }
+            Console.WriteLine("Masukkan array: ");
+            Console.Write("\n");
+            for (int k = 0; k < max; k++)
+            {
+                Console.Write(nomor[k] + " ");
+                Console.Write("\n");
+            }
+            Console.WriteLine("MergeSort By Recursive Method");
+            SortMerge(nomor, 0, max - 1);
+            for (int i = 0; i < max; i++)
+                Console.WriteLine(nomor[i]);
+            Console.ReadLine();
+
+        }
     }
 }
