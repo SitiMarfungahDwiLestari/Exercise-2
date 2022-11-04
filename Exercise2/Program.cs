@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 
 namespace Exercise2
 {
-    internal class Program
+    class Program
     {
+        static int InsertionSort()
+        {
+            
+        }
         static void Main(string[] args)
         {
-
+            InsertionSort();
         }
     }
 }
